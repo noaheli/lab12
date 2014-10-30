@@ -26,12 +26,16 @@ class MyApp:
 		self.button1.configure(text="Left", background= "green")
 		self.button1.grid(row=0,column=0)
 		
+		self.button2 = Button(self.myContainer1)
+		self.button2.configure(text="Right", background= "Blue")
+		self.button2.grid(row=0,column=1)
 	        # Add a second button!
 				
 		
 						
 		# "Bind" an action to the first button												
 		self.button1.bind("<Button-1>", self.button1Click)
+		self.button2.bind("<Button-1>", self.button2Click)
 		# Create the code to bind an action to the second button
 		# Do not change "<Button-1>"
 		 
@@ -41,13 +45,14 @@ class MyApp:
 		
 
 		
-	def button1Click(self, event):   
-		# Make the oval move to the left!
-                # "global" makes sure that we can access our oval and our drawpad
+	def button1Click(self, event): 
 		global oval
 		global drawpad
-	
-	# Add the event handler for the second button to make it move right!
+		drawpad.move(oval, -10, 0)
+	def button2Click(self, event): 
+		global oval
+		global drawpad
+		drawpad.move(oval, 10, 0)
 	
 		
 myapp = MyApp(root)
